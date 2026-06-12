@@ -29,8 +29,7 @@
     --border:    rgba(181,123,174,.18);
     --border-mid:rgba(181,123,174,.34);
 
-    /* ── YOUR PHOTO ── swap the url() to change it ── */
-    --hero-img: url('https://res.cloudinary.com/donbuqwxp/image/upload/v1781297854/meet_Danielle_-3_g3pis7.png');
+    /* ── YOUR PHOTO ── swap the src on the .bg-photo <img> below in the body ── */
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
@@ -48,30 +47,37 @@
     justify-content:center;
   }
 
-  /* full-page photo, plum overlay — light over the hero, heavy behind content */
+  /* plum base; photo + overlay are separate layers below */
   .shell{
     width:100%;
     max-width:480px;
     position:relative;
     overflow:hidden;
-    background-image:
-      linear-gradient(180deg,
-        rgba(31,19,32,.46) 0%,
-        rgba(31,19,32,.66) 26%,
-        rgba(31,19,32,.86) 50%,
-        rgba(31,19,32,.95) 72%,
-        rgba(31,19,32,.99) 100%),
-      var(--hero-img);
     background-color:var(--bg);
-    background-size:100% 100%, 100% auto;
-    background-position:center top;
-    background-repeat:no-repeat;
   }
+  /* photo layer — full width, zoomed out, fades into the plum at its own bottom edge */
+  .bg-photo{
+    position:absolute; top:0; left:0; width:100%; height:auto; z-index:0;
+    pointer-events:none; user-select:none;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 56%,transparent 90%);
+            mask-image:linear-gradient(to bottom,#000 0%,#000 56%,transparent 90%);
+  }
+  /* plum overlay for text legibility, above the photo */
+  .shell::before{
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(180deg,
+      rgba(31,19,32,.46) 0%,
+      rgba(31,19,32,.66) 26%,
+      rgba(31,19,32,.86) 50%,
+      rgba(31,19,32,.95) 72%,
+      rgba(31,19,32,.99) 100%);
+  }
+  .hero,.offers,.social{ position:relative; z-index:2; }
 
   /* ── HERO ───────────────────────────────────────────────── */
   .hero{
     position:relative;
-    min-height:84vh;
+    min-height:66vh;
     padding:30px 26px 30px;
     display:flex;
     flex-direction:column;
@@ -231,6 +237,10 @@
 </head>
 <body>
   <main class="shell">
+
+    <!-- background photo (swap the src to change it) -->
+    <img class="bg-photo" alt="" aria-hidden="true"
+         src="https://res.cloudinary.com/donbuqwxp/image/upload/v1781297854/meet_Danielle_-3_g3pis7.png">
 
     <!-- HERO -->
     <header class="hero">

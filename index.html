@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Badass Alchemy — Start Here</title>
+<meta name="description" content="You were never the problem. You were running on survival mode. Pick where you start.">
+<meta property="og:title" content="Badass Alchemy — Start Here">
+<meta property="og:description" content="You were never the problem. Pick where you start.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:        #1F1320;
+    --bg-card:   #2A1A2D;
+    --ink:       #FAEFF4;
+    --ink-sec:   #EDD8E5;
+    --muted:     #C9A8BE;
+    --faded:     #9B7090;
+    --mauve:     #B57BAE;
+    --mauve-deep:#6E3865;
+    --detail:    #C99CC1;
+    --grad:      linear-gradient(135deg, #B57BAE 0%, #6E3865 100%);
+    --on-grad-deep:#2A1424;
+    --border:    rgba(181,123,174,.18);
+    --border-mid:rgba(181,123,174,.34);
+
+    /* ── YOUR PHOTO ── swap the url() to change it ── */
+    --hero-img: url('https://res.cloudinary.com/donbuqwxp/image/upload/v1781296888/meet_Danielle_rcbwd9.png');
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ -webkit-text-size-adjust:100%; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink-sec);
+    font-family:'Montserrat',system-ui,sans-serif;
+    font-weight:500;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* full-page photo, plum overlay — light over the hero, heavy behind content */
+  .shell{
+    width:100%;
+    max-width:480px;
+    position:relative;
+    overflow:hidden;
+    background-image:
+      linear-gradient(180deg,
+        rgba(31,19,32,.34) 0%,
+        rgba(31,19,32,.46) 30%,
+        rgba(31,19,32,.74) 56%,
+        rgba(31,19,32,.90) 78%,
+        rgba(31,19,32,.96) 100%),
+      var(--hero-img);
+    background-size:cover;
+    background-position:center top;
+    background-repeat:no-repeat;
+  }
+
+  /* ── HERO ───────────────────────────────────────────────── */
+  .hero{
+    position:relative;
+    min-height:60vh;
+    padding:30px 26px 30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+  }
+
+  .eyebrow{
+    font-size:10.5px; font-weight:700; letter-spacing:.26em;
+    text-transform:uppercase; color:var(--detail); margin-bottom:18px;
+  }
+  .eyebrow .mark{ color:var(--mauve); margin-right:7px; }
+
+  .hero h1{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-weight:700;
+    font-size:clamp(38px,11vw,52px);
+    line-height:1.02; letter-spacing:-.005em;
+    color:var(--ink);
+    text-shadow:0 2px 24px rgba(31,19,32,.6);
+  }
+  .hero h1 .accent{
+    display:block; margin-top:6px;
+    font-style:italic; font-weight:600;
+    color:var(--mauve); font-size:.62em; letter-spacing:0;
+  }
+  .hero p{
+    margin-top:18px; max-width:32ch;
+    font-size:14px; font-weight:400; line-height:1.65;
+    color:var(--ink-sec);
+    text-shadow:0 1px 16px rgba(31,19,32,.7);
+  }
+
+  /* ── OFFERS ─────────────────────────────────────────────── */
+  .offers{ padding:26px 22px 8px; display:flex; flex-direction:column; gap:13px; }
+
+  .section-label{
+    font-size:10px; font-weight:700; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--faded); padding:0 4px 1px;
+  }
+  .gap{ margin-top:9px; }
+
+  /* frosted card base */
+  .offer{
+    position:relative; display:block; text-decoration:none;
+    border-radius:14px; padding:18px 20px 18px 24px;
+    transition:transform .18s ease, box-shadow .25s ease, border-color .2s ease;
+  }
+  .offer:active{ transform:scale(.985); }
+  .offer::before{
+    content:""; position:absolute; left:0; top:15px; bottom:15px;
+    width:3px; border-radius:3px;
+  }
+  .offer .row{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
+  .offer .name{
+    font-family:'Cormorant Garamond',serif; font-weight:700; font-style:italic;
+    font-size:23px; line-height:1.05; letter-spacing:.005em;
+  }
+  .offer .desc{ margin-top:6px; font-size:12.5px; font-weight:400; line-height:1.45; }
+  .offer .arrow{ flex:0 0 auto; font-size:18px; line-height:1; transition:transform .18s ease; }
+  .offer:hover .arrow{ transform:translateX(4px); }
+
+  .pill{
+    display:inline-block; font-size:9px; font-weight:800; letter-spacing:.16em;
+    text-transform:uppercase; padding:5px 10px; border-radius:50px; margin-bottom:10px;
+  }
+
+  /* PRIMARY — free masterclass: solid gradient, the one thing that glows */
+  .offer--primary{ background:var(--grad); box-shadow:0 12px 34px -14px rgba(110,56,101,.9); }
+  .offer--primary::before{ background:rgba(255,255,255,.5); }
+  .offer--primary:hover{ box-shadow:0 18px 44px -14px rgba(110,56,101,1); }
+  .offer--primary .pill{ background:rgba(250,239,244,.92); color:var(--on-grad-deep); }
+  .offer--primary .name{ color:#FFFFFF; }
+  .offer--primary .desc{ color:rgba(255,255,255,.82); }
+  .offer--primary .arrow{ color:#FFFFFF; }
+
+  /* SECONDARY — paid offers: frosted plum */
+  .offer--ghost{
+    background:rgba(42,26,45,.78);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+    border:1px solid var(--border-mid);
+  }
+  .offer--ghost::before{ background:var(--mauve); }
+  .offer--ghost:hover{ border-color:var(--mauve); }
+  .offer--ghost .name{ color:var(--ink); }
+  .offer--ghost .desc{ color:var(--muted); }
+  .offer--ghost .price{
+    font-family:'Cormorant Garamond',serif; font-weight:700;
+    font-size:21px; color:var(--mauve); white-space:nowrap;
+  }
+  .offer--ghost .arrow{ color:var(--mauve); }
+
+  /* ── SKOOL / COMMUNITY BOX ──────────────────────────────── */
+  .skool{
+    position:relative; display:block; text-decoration:none;
+    margin-top:4px; border-radius:16px; padding:22px 22px 20px;
+    background:
+      linear-gradient(160deg, rgba(181,123,174,.16) 0%, rgba(42,26,45,.82) 55%),
+      rgba(42,26,45,.78);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+    border:1px solid var(--border-mid);
+    transition:transform .18s ease, border-color .2s ease, box-shadow .25s ease;
+  }
+  .skool:active{ transform:scale(.99); }
+  .skool:hover{ border-color:var(--mauve); box-shadow:0 14px 36px -16px rgba(110,56,101,.8); }
+  .skool .klabel{
+    font-size:9px; font-weight:800; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--detail); margin-bottom:9px;
+  }
+  .skool h3{
+    font-family:'Cormorant Garamond',serif; font-weight:700; font-style:italic;
+    font-size:26px; line-height:1.04; color:var(--ink); margin-bottom:6px;
+  }
+  .skool .ksub{ font-size:12.5px; font-weight:400; color:var(--muted); margin-bottom:16px; }
+  .skool ul{ list-style:none; display:flex; flex-direction:column; gap:9px; margin-bottom:18px; }
+  .skool li{
+    font-size:12.5px; font-weight:500; color:var(--ink-sec);
+    padding-left:22px; position:relative; line-height:1.4;
+  }
+  .skool li::before{
+    content:"\2726"; position:absolute; left:0; top:0;
+    color:var(--mauve); font-size:12px;
+  }
+  .skool .kcta{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; border-top:1px solid var(--border);
+    font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--mauve);
+  }
+  .skool .kcta .arrow{ font-size:16px; transition:transform .18s ease; }
+  .skool:hover .kcta .arrow{ transform:translateX(4px); }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  .social{ padding:34px 22px 44px; text-align:center; }
+  .social .signoff{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:20px; color:var(--mauve); margin-bottom:5px;
+  }
+  .social .handle{
+    font-size:11px; font-weight:600; letter-spacing:.05em; color:var(--ink-sec);
+  }
+  .social .meta{
+    margin-top:20px; font-size:8px; font-weight:700; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--faded);
+  }
+
+  /* ── load motion ────────────────────────────────────────── */
+  .reveal{ opacity:0; transform:translateY(12px); }
+  .in{ animation:rise .55s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes rise{ to{ opacity:1; transform:none; } }
+
+  a:focus-visible, .offer:focus-visible, .skool:focus-visible{ outline:2px solid var(--detail); outline-offset:3px; }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{ opacity:1; transform:none; } .in{ animation:none; }
+    .offer,.arrow,.skool{ transition:none; }
+  }
+</style>
+</head>
+<body>
+  <main class="shell">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="eyebrow reveal"><span class="mark">&#10022;</span>From Scarcity to Sovereign</div>
+      <h1 class="reveal">
+        You were never<br>the problem.
+        <span class="accent">You were running on survival mode.</span>
+      </h1>
+      <p class="reveal">For women in transition who are done outsourcing their power. Self-trust is the whole game. Pick where you start.</p>
+    </header>
+
+    <!-- OFFERS -->
+    <section class="offers">
+
+      <div class="section-label reveal">Start here</div>
+
+      <!-- PRIMARY: free masterclass.  TODO: replace href -->
+      <a class="offer offer--primary reveal" href="#REPLACE_WITH_MASTERCLASS_REGISTRATION_URL">
+        <span class="pill">Free Masterclass &middot; 15 min</span>
+        <div class="row">
+          <div>
+            <div class="name">Activate the Queen</div>
+            <div class="desc">Why your manifesting keeps stalling &mdash; and the identity shift that ends the loop.</div>
+          </div>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </div>
+      </a>
+
+      <div class="section-label reveal gap">Go deeper</div>
+
+      <!-- SECONDARY 1.  TODO: replace href -->
+      <a class="offer offer--ghost reveal" href="#REPLACE_WITH_IDENTITY_DETOX_URL">
+        <div class="row">
+          <div>
+            <div class="name">Identity Detox</div>
+            <div class="desc">Clear the survival-mode patterns running your life on repeat.</div>
+          </div>
+          <span class="price">$47</span>
+        </div>
+      </a>
+
+      <!-- SECONDARY 2.  TODO: replace href -->
+      <a class="offer offer--ghost reveal" href="#REPLACE_WITH_ART_OF_RECEIVING_URL">
+        <div class="row">
+          <div>
+            <div class="name">The Art of Receiving</div>
+            <div class="desc">Let money, love, and support in &mdash; without the guilt or the bracing.</div>
+          </div>
+          <span class="price">$27</span>
+        </div>
+      </a>
+
+      <div class="section-label reveal gap">Go all in</div>
+
+      <!-- SKOOL COMMUNITY.  TODO: replace href -->
+      <a class="skool reveal" href="#REPLACE_WITH_SKOOL_URL">
+        <div class="klabel">The Community</div>
+        <h3>Step Inside The Baddie Society</h3>
+        <div class="ksub">In my Skool &mdash; the whole world in one place.</div>
+        <ul>
+          <li>The EFT Tapping Vault &mdash; 80+ guided sessions</li>
+          <li>Rich Girl Reset &mdash; money activation meditations</li>
+          <li>Manifestation journals to call in everything you want</li>
+          <li>Affirmation cards for daily rewiring</li>
+          <li>The AI Oracle &amp; shadow-work prompts</li>
+          <li>Live challenges + the Magnetic Woman cohort</li>
+        </ul>
+        <div class="kcta">
+          <span>Join The Baddie Society</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </div>
+      </a>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="social">
+      <div class="signoff reveal">You are the alchemy.</div>
+      <div class="handle reveal">@badassalchemy</div>
+      <div class="meta reveal">Badass Alchemy &middot; Baddie Society</div>
+    </footer>
+
+  </main>
+
+  <script>
+    const items = document.querySelectorAll('.reveal');
+    items.forEach((el, i) => setTimeout(() => el.classList.add('in'), 80 * i));
+  </script>
+</body>
+</html>
